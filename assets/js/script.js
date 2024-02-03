@@ -4,16 +4,14 @@ const buttonRestart = document.getElementById("restart");
 const res = document.getElementById("res");
 const background = document.getElementById("background");
 
-const getRandomNumber = () => {
-  const randomNumber = Math.floor(Math.random() * (window.innerHeight - 79));
+const getRandomNumberHeight = () => (Math.floor(Math.random() * (window.innerHeight - 37)))
 
-  return randomNumber;
-};
+const getRandomNumberWidth = () => (Math.floor(Math.random() * (window.innerWidth - 79)))
 
 buttonNao.addEventListener("mouseover", () => {
   buttonNao.style.position = "absolute";
-  buttonNao.style.top = `${getRandomNumber()}px`;
-  buttonNao.style.left = `${getRandomNumber()}px`;
+  buttonNao.style.top = `${getRandomNumberHeight()}px`;
+  buttonNao.style.left = `${getRandomNumberWidth()}px`;
 });
 
 buttonSim.addEventListener("click", () => {
