@@ -1,0 +1,43 @@
+main {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.question-box {
+  display: flex;
+  padding: 24px;
+  gap: 26px;
+  align-items: center;
+  flex-direction: column;
+}
+
+:where(.button-wrapper, .answer-box) .button {
+  text-transform: uppercase;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: end;
+  width: calc(103px + 24px + 98px);
+  gap: 24px;
+}
+
+.answer-box {
+  display: none;
+  flex-direction: column;
+  padding: 24px;
+  align-items: center;
+  gap: 36px;
+}
+
+.image {
+  height: 40vh;
+}
+
+@media screen and (min-width: 768px) {
+  .button-wrapper {
+    width: calc(144px + 24px + 152px);
+  }
+}
