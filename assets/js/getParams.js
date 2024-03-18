@@ -5,8 +5,6 @@ const image = document.getElementById("image");
 const data = {};
 const params = decodeURIComponent(location.search).slice(1).split("&");
 
-console.log(params);
-
 if (params.length !== 0) {
   params.forEach((param) => {
     const parts = param.split("=");

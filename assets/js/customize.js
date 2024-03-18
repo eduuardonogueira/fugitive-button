@@ -1,21 +1,26 @@
 const data = {};
 const url = window.location.toString().replace("customize.html", "");
 
-const question = document.getElementById("question");
-question.addEventListener("input", () => getInputValue(question));
+const question = document
+  .getElementById("question")
+  .addEventListener("input", (event) => getInputValue(event));
 
-const answer = document.getElementById("answer");
-answer.addEventListener("input", () => getInputValue(answer));
+const answer = document
+  .getElementById("answer")
+  .addEventListener("input", (event) => getInputValue(event));
 
-const imageUrl = document.getElementById("image-url");
-imageUrl.addEventListener("input", () => getInputValue(imageUrl));
+const imageUrl = document
+  .getElementById("image-url")
+  .addEventListener("input", (event) => getInputValue(event));
 
-const inputFile = document.getElementById("file");
+const inputFile = document
+  .getElementById("file")
+  .addEventListener("change", (event) => uploadImage(event));
 
-inputFile.addEventListener("change", () => uploadImage(inputFile));
+const generatedUrl = document.getElementById("generated-url");
 
-function uploadImage(inputFile) {
-  const file = inputFile.files[0];
+function uploadImage(event) {
+  const file = event.target.files[0];
 
   var formData = new FormData();
 
@@ -26,16 +31,23 @@ function uploadImage(inputFile) {
     headers: {
       Authorization: "Client-ID 5624532fa15df26",
     },
-    data: formData,
+    body: formData,
   };
 
-  fetch("https://api.imgur.com/3/image/", HttpConfig).then((response) => {
-    console.log(response);
-    imageUrl.value = response.data.link;
-  });
-}
+  fetch("https://api.imgur.com/3/image/", HttpConfig)
+    .then((data) => data.json())
+    .then((response) => {
+      console.log(response);
+      const imgurUrl = response.data.link;
+      const imageUrl = document.getElementById("image-url");
 
-const generatedUrl = document.getElementById("generated-url");
+      imageUrl.readOnly = true;
+      imageUrl.value = imgurUrl;
+      data["imageUrl"] = imgurUrl;
+
+      putGenerateUrl();
+    });
+}
 
 function placeParams() {
   const parts = Object.entries(data);
@@ -49,11 +61,15 @@ function placeParams() {
   return concatenatedParams;
 }
 
-function getInputValue(inputName) {
-  const value = inputName.value;
-  const key = inputName.name;
+function getInputValue(event) {
+  const value = event.target.value;
+  const key = event.target.name;
   data[key] = value;
-  generatedUrl.value = `${url}?${placeParams()}`;
+  putGenerateUrl();
+}
+
+function putGenerateUrl() {
+  generatedUrl.value = `${url}play.html?${placeParams()}`;
 }
 
 const copyButton = document.getElementById("copy");
