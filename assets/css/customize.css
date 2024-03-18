@@ -1,27 +1,28 @@
-main {
-  padding-inline: 24px;
+.customize {
+  padding: 24px;
   height: 100vh;
   align-items: center;
   justify-content: center;
+  gap: 24px;
+  box-sizing: border-box;
 }
 
-main,
-.custom,
+.customize,
+.customize-wrapper,
 .url-wrapper {
   display: flex;
   flex-direction: column;
 }
 
-.custom {
+.customize-wrapper {
   gap: 12px;
   padding: 24px 36px;
-  background: var(--white);
+  background: var(--gray-200);
   border-radius: 7px;
   gap: 12px;
   width: 100%;
   max-width: 400px;
   box-sizing: border-box;
-  margin-block: 24px;
 }
 
 .inputs-wrapper {
@@ -36,18 +37,14 @@ main,
   gap: 8px;
 }
 
-.url-wrapper {
-  gap: 8px;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
+.file-input {
+  align-self: center;
 }
 
-.url-wrapper > h3 {
-  color: var(--black);
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: bold;
+.url-wrapper {
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .url-wrapper__input {
@@ -66,9 +63,21 @@ main,
   }
 }
 
+.label-file {
+  align-self: center;
+}
+
 .link-wrapper {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 24px;
+}
+
+.link-wrapper .button {
+  width: 100%;
+  box-sizing: border-box;
+  text-wrap: nowrap;
+  text-align: center;
+  text-decoration: none;
 }
