@@ -3,9 +3,11 @@ const answer = document.getElementById("answer");
 const image = document.getElementById("image");
 
 const data = {};
-const params = decodeURIComponent(location.search).slice(1).split("&");
+const url = decodeURIComponent(location.search);
 
-if (params.length !== 0) {
+if (url) {
+  const params = url.slice(1).split("&");
+
   params.forEach((param) => {
     const parts = param.split("=");
     const key = parts[0];
@@ -15,5 +17,10 @@ if (params.length !== 0) {
 
   question.innerHTML = data.question;
   answer.innerHTML = data.answer;
-  image.src = data.imageUrl;
+
+  if (data.imageUrl) {
+    image.src = data.imageUrl;
+  } else {
+    image.style.display = "none";
+  }
 }

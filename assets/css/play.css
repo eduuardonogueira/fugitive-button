@@ -6,6 +6,10 @@ body {
   align-items: center;
 }
 
+.menu-nav {
+  display: none;
+}
+
 .question-box {
   display: flex;
   padding: 24px;

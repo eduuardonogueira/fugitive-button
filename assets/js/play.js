@@ -5,6 +5,7 @@ const buttonRestart = document.getElementById("restart");
 const text = document.getElementById("answer");
 const questionBox = document.getElementById("question-box");
 const answerBox = document.getElementById("answer-box");
+const menu = document.getElementById("menu");
 
 const getRandomNumberHeight = () =>
   Math.floor(Math.random() * (window.innerHeight - buttonNot.clientHeight));
@@ -19,16 +20,18 @@ buttonNot.addEventListener("mouseover", () => {
 });
 
 buttonYes.addEventListener("click", () => {
-  text.style.display = "block";
   questionBox.style.display = "none";
+  text.style.display = "block";
   answerBox.style.display = "flex";
   buttonRestart.style.display = "flex";
+  menu.style.display = "flex";
 });
 
 buttonRestart.addEventListener("click", () => {
   text.style.display = "none";
   answerBox.style.display = "none";
   buttonRestart.style.display = "none";
+  menu.style.display = "none";
   questionBox.style.display = "flex";
 
   buttonNot.style.position = "relative";
